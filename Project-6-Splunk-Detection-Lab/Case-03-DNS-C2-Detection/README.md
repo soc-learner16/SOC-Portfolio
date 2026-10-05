@@ -45,9 +45,9 @@ The activity was then investigated using Splunk and supported with Wireshark pac
 
 The main lab communication used an isolated VirtualBox Host-only network:
 
-```
+
 192.168.10.0/24
-```
+
 
 | System | IP Address |
 |---|---|
