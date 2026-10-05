@@ -167,8 +167,8 @@ The baseline was used to understand normal DNS query patterns and the processes 
 
 ### Evidence
 
-![Screenshot 01 — DNS Baseline Query Frequency](Evidence/01_DNS_Baseline_QueryName_Frequency.png)
-![Screenshot 03 — DNS Baseline Process/Query Relationship](Evidence/03_DNS_Baseline_Process_Query_Relationship.png)
+- [Screenshot 01 — DNS Baseline Query Frequency](Evidence/01_DNS_Baseline_QueryName_Frequency.png)
+- [Screenshot 03 — DNS Baseline Process/Query Relationship](Evidence/03_DNS_Baseline_Process_Query_Relationship.png)
 
 ---
 
