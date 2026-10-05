@@ -257,7 +257,7 @@ The results showed PowerShell activity associated with the lab DNS domain.
 
 ### Evidence
 
-- [Screenshot 10 — Splunk DNS Process/Query Relationship](Evidence/10_Splunk_DNS_Process_Query_Relationship.png)
+- [Screenshot 10 — Splunk DNS Process/Query Relationship](Evidence/10_DNS_C2_Process_Query_Relationship.png)
 
 ---
 
@@ -365,7 +365,7 @@ This connected the DNS activity with PowerShell.
 
 ### Evidence
 
-- [Screenshot 14 — Raw DNS C2 Result Event](Evidence/14_Splunk_Raw_DNS_C2_Result_Event.png)
+- [Screenshot 14 — Raw DNS C2 Result Event](Evidence/14_Splunk_Raw_DNS_C2_Event.png)
 
 ---
 
@@ -414,7 +414,7 @@ JBXXG5BAJZQW2JZ2EAQCAIBAEAQCAIBAEAQEIRKT
 
 ### Evidence
 
-- [Screenshot 16 — Encoded Payload Extraction](Evidence/16_Encoded_Payload_Extraction.png)
+- [Screenshot 16 — Encoded Payload Extraction](Evidence/16_Splunk_DNS_C2_Encoded_Payload_Extraction.png)
 
 ---
 
@@ -443,7 +443,7 @@ This provided supporting evidence that the `systeminfo` command was executed by 
 
 ### Evidence
 
-- [Screenshot 17 — Systeminfo Process Execution](Evidence/17_Systeminfo_Process_Execution.png)
+- [Screenshot 17 — Systeminfo Process Execution](Evidence/17_Splunk_Systeminfo_Process_Execution.png)
 
 ---
 
@@ -625,17 +625,17 @@ All screenshots are available in the [`Evidence/`](Evidence/) directory.
 
 | Screenshot | Description |
 |---|---|
-| [01 — DNS Baseline Query Frequency](Evidence/01_DNS_Baseline_Query_Frequency.png) | DNS baseline query frequency |
+| [01 — DNS Baseline Query Frequency](Evidence/01_DNS_Baseline_QueryName_Frequency.png) | DNS baseline query frequency |
 | [03 — DNS Baseline Process/Query Relationship](Evidence/03_DNS_Baseline_Process_Query_Relationship.png) | DNS process/query relationship |
 | [06 — DNS C2 Server Task and Result](Evidence/06_DNS_C2_Server_Task_Result.png) | Controlled DNS C2 server activity |
 | [07 — DNS C2 Client Task Execution](Evidence/07_DNS_C2_Client_Task_Execution.png) | DNS C2 client task execution |
 | [09 — Splunk DNS C2 Events](Evidence/09_Splunk_DNS_C2_Events.png) | Splunk DNS C2 events |
-| [10 — Splunk DNS Process/Query Relationship](Evidence/10_Splunk_DNS_Process_Query_Relationship.png) | DNS process/query analysis |
+| [10 — Splunk DNS Process/Query Relationship](Evidence/10_DNS_Process_Query_Relationship.png) | DNS process/query analysis |
 | [13 — Splunk DNS C2 Alert Triggered](Evidence/13_Splunk_DNS_C2_Alert_Triggered.png) | Triggered Splunk alert |
 | [14 — Raw DNS C2 Result Event](evidence/14_Splunk_Raw_DNS_C2_Result_Event.png) | Raw DNS result event |
 | [15 — DNS C2 Check-in](Evidence/15_Splunk_DNS_C2_Checkin_Event.png) | DNS C2 check-in |
-| [16 — Encoded Payload Extraction](Evidence/16_Encoded_Payload_Extraction.png) | Encoded data extraction |
-| [17 — Systeminfo Process Execution](Evidence/17_Systeminfo_Process_Execution.png) | Systeminfo process execution |
+| [16 — Encoded Payload Extraction](Evidence/16_Splunk_DNS_C2_Encoded_Payload_Extraction.png) | Encoded data extraction |
+| [17 — Systeminfo Process Execution](Evidence/17_Splunk_Systeminfo_Process_Execution.png) | Systeminfo process execution |
 | [19 — Wireshark DNS C2 Exchange](Evidence/19_Wireshark_DNS_C2_Exchange.png) | Wireshark DNS C2 exchange |
 
 Additional supporting screenshots are available in the [`Evidence/`](Evidence/) directory.
