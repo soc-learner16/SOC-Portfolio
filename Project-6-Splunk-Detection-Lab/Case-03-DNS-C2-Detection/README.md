@@ -58,7 +58,7 @@ The main lab communication used an isolated VirtualBox Host-only network:
 
 ## Network Architecture
 
-```text
+`
                 Isolated Host-only Network
                    192.168.10.0/24
 
@@ -79,7 +79,7 @@ The main lab communication used an isolated VirtualBox Host-only network:
         │                              │
         │ Controlled DNS C2 Server     │
         └──────────────────────────────┘
-```
+`
 
 ---
 
@@ -87,9 +87,9 @@ The main lab communication used an isolated VirtualBox Host-only network:
 
 The lab used the domain:
 
-```text
+`
 c2-sync.lab
-```
+`
 
 The Windows client performed a DNS check-in to the Ubuntu server.
 
@@ -106,12 +106,12 @@ The Windows client:
 
 Only the following commands were allowed:
 
-```text
+`
 whoami
 hostname
 ipconfig
 systeminfo
-```
+`
 
 No unrestricted command execution was implemented.
 
@@ -119,7 +119,7 @@ No unrestricted command execution was implemented.
 
 ## DNS C2 Communication Flow
 
-```text
+`
 Windows Client
       │
       │ 1. DNS check-in
@@ -140,11 +140,11 @@ Windows Client
       │ 6. DNS result query
       ▼
 Ubuntu C2 Server
-```
+`
 
 Example:
 
-```text
+`
 Check-in:
 checkin.022906.c2-sync.lab
 
@@ -153,7 +153,7 @@ ON4XG5DFNVUW4ZTP
 
 Decoded task:
 systeminfo
-```
+`
 
 The command result was then encoded and placed inside a DNS query name.
 
@@ -167,8 +167,8 @@ The baseline was used to understand normal DNS query patterns and the processes 
 
 ### Evidence
 
-- [Screenshot 01 — DNS Baseline Query Frequency](evidence/01_DNS_Baseline_Query_Frequency.png)
-- [Screenshot 03 — DNS Baseline Process/Query Relationship](evidence/03_DNS_Baseline_Process_Query_Relationship.png)
+- [Screenshot 01 — DNS Baseline Query Frequency](Evidence/01_DNS_Baseline_Query_Frequency.png)
+- [Screenshot 03 — DNS Baseline Process/Query Relationship](Evidence/03_DNS_Baseline_Process_Query_Relationship.png)
 
 ---
 
@@ -182,8 +182,8 @@ The server then received the encoded command result from the Windows endpoint.
 
 ### Evidence
 
-- [Screenshot 06 — DNS C2 Server Task and Result](evidence/06_DNS_C2_Server_Task_Result.png)
-- [Screenshot 07 — DNS C2 Client Task Execution](evidence/07_DNS_C2_Client_Task_Execution.png)
+- [Screenshot 06 — DNS C2 Server Task and Result](Evidence/06_DNS_C2_Server_Task_Result.png)
+- [Screenshot 07 — DNS C2 Client Task Execution](Evidence/07_DNS_C2_Client_Task_Execution.png)
 
 ---
 
@@ -202,13 +202,13 @@ The events provided information such as:
 
 Example activity was associated with:
 
-```text
+`
 powershell.exe
-```
+`
 
 ### Evidence
 
-- [Screenshot 08 — Sysmon DNS C2 Events](evidence/08_Sysmon_DNS_C2_Events.png)
+- [Screenshot 08 — Sysmon DNS C2 Events](Evidence/08_Sysmon_DNS_C2_Events.png)
 
 ---
 
@@ -220,13 +220,13 @@ The DNS events were then searched in Splunk using Sysmon Event ID 22.
 
 The lab domain was filtered using:
 
-```text
+`
 QueryName="*c2-sync.lab*"
-```
+`
 
 ### Evidence
 
-- [Screenshot 09 — Splunk DNS C2 Events](evidence/09_Splunk_DNS_C2_Events.png)
+- [Screenshot 09 — Splunk DNS C2 Events](Evidence/09_Splunk_DNS_C2_Events.png)
 
 ---
 
@@ -257,7 +257,7 @@ The results showed PowerShell activity associated with the lab DNS domain.
 
 ### Evidence
 
-- [Screenshot 10 — Splunk DNS Process/Query Relationship](evidence/10_Splunk_DNS_Process_Query_Relationship.png)
+- [Screenshot 10 — Splunk DNS Process/Query Relationship](Evidence/10_Splunk_DNS_Process_Query_Relationship.png)
 
 ---
 
@@ -305,10 +305,10 @@ It should **not** be considered a general-purpose DNS tunneling detection rule.
 
 The detection search was saved as a scheduled Splunk alert:
 
-```text
+`
 Alert:
 Suspicious DNS C2 Activity - PowerShell
-```
+`
 
 Configuration:
 
@@ -324,7 +324,7 @@ Configuration:
 
 ### Evidence
 
-- [Screenshot 12 — Splunk DNS C2 Alert Enabled](evidence/12_Splunk_DNS_C2_Alert_Enabled.png)
+- [Screenshot 12 — Splunk DNS C2 Alert Enabled](Evidence/12_Splunk_DNS_C2_Alert_Enabled.png)
 
 ---
 
@@ -336,7 +336,7 @@ The alert appeared in the **Triggered Alerts** section.
 
 ### Evidence
 
-- [Screenshot 13 — Splunk DNS C2 Alert Triggered](evidence/13_Splunk_DNS_C2_Alert_Triggered.png)
+- [Screenshot 13 — Splunk DNS C2 Alert Triggered](Evidence/13_Splunk_DNS_C2_Alert_Triggered.png)
 
 This confirmed that the detection was able to identify the simulated DNS C2 activity.
 
@@ -350,22 +350,22 @@ After the alert triggered, the DNS events were investigated to understand the ac
 
 A raw Sysmon Event ID 22 event showed a DNS query containing encoded data:
 
-```text
+`
 res.022906.JBXXG5BAJZQW2JZ2EAQCAIBAEAQCAIBAEAQEIRKT.c2-sync.lab
-```
+`
 
 The event also showed:
 
-```text
+`
 Image:
 C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
-```
+`
 
 This connected the DNS activity with PowerShell.
 
 ### Evidence
 
-- [Screenshot 14 — Raw DNS C2 Result Event](evidence/14_Splunk_Raw_DNS_C2_Result_Event.png)
+- [Screenshot 14 — Raw DNS C2 Result Event](Evidence/14_Splunk_Raw_DNS_C2_Result_Event.png)
 
 ---
 
@@ -373,25 +373,25 @@ This connected the DNS activity with PowerShell.
 
 A separate DNS event showed the initial check-in:
 
-```text
+`
 checkin.022906.c2-sync.lab
-```
+`
 
 The DNS response contained:
 
-```text
+`
 ON4XG5DFNVUW4ZTP
-```
+`
 
 This value was confirmed to represent:
 
-```text
+`
 systeminfo
-```
+`
 
 ### Evidence
 
-- [Screenshot 15 — DNS C2 Check-in](evidence/15_Splunk_DNS_C2_Checkin_Event.png)
+- [Screenshot 15 — DNS C2 Check-in](Evidence/15_Splunk_DNS_C2_Checkin_Event.png)
 
 ---
 
@@ -408,13 +408,13 @@ index=* host=DESKTOP-B6GVH9G sourcetype="WinEventLog:Microsoft-Windows-Sysmon/Op
 
 The extracted value was:
 
-```text
+`
 JBXXG5BAJZQW2JZ2EAQCAIBAEAQCAIBAEAQEIRKT
-```
+`
 
 ### Evidence
 
-- [Screenshot 16 — Encoded Payload Extraction](evidence/16_Encoded_Payload_Extraction.png)
+- [Screenshot 16 — Encoded Payload Extraction](Evidence/16_Encoded_Payload_Extraction.png)
 
 ---
 
@@ -431,19 +431,19 @@ index=* host=DESKTOP-B6GVH9G sourcetype="WinEventLog:Microsoft-Windows-Sysmon/Op
 
 The results showed:
 
-```text
+`
 Image:
 C:\Windows\System32\systeminfo.exe
 
 ParentImage:
 C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
-```
+`
 
 This provided supporting evidence that the `systeminfo` command was executed by PowerShell.
 
 ### Evidence
 
-- [Screenshot 17 — Systeminfo Process Execution](evidence/17_Systeminfo_Process_Execution.png)
+- [Screenshot 17 — Systeminfo Process Execution](Evidence/17_Systeminfo_Process_Execution.png)
 
 ---
 
@@ -453,17 +453,17 @@ The encoded task and result were validated using Base32 decoding.
 
 Example:
 
-```text
+`
 ON4XG5DFNVUW4ZTP
         ↓
 systeminfo
-```
+`
 
 The result data was also decoded and contained system information returned by the Windows endpoint.
 
 ### Evidence
 
-- [Screenshot 18 — DNS C2 Base32 Decoding](evidence/18_DNS_C2_Base32_Decoding.png)
+- [Screenshot 18 — DNS C2 Base32 Decoding](Evidence/18_DNS_C2_Base32_Decoding.png)
 
 ---
 
@@ -473,7 +473,7 @@ Wireshark was used as supporting evidence to verify that the DNS C2 communicatio
 
 The capture showed:
 
-```text
+`
 Windows → Ubuntu
 DNS check-in
 
@@ -485,17 +485,17 @@ DNS result query
 
 Ubuntu → Windows
 DNS response
-```
+`
 
 The traffic was filtered using the lab domain:
 
-```text
+`
 c2-sync.lab
-```
+`
 
 ### Evidence
 
-- [Screenshot 19 — Wireshark DNS C2 Exchange](evidence/19_Wireshark_DNS_C2_Exchange.png)
+- [Screenshot 19 — Wireshark DNS C2 Exchange](Evidence/19_Wireshark_DNS_C2_Exchange.png)
 
 ---
 
@@ -542,9 +542,9 @@ The detection created in this project was designed for the controlled lab enviro
 
 It specifically searched for:
 
-```text
+`
 c2-sync.lab
-```
+`
 
 Therefore, it is **not a general-purpose DNS tunneling detector**.
 
@@ -619,43 +619,37 @@ The project used Base32 encoding for task and result data transferred through DN
 
 The project contains 19 screenshots documenting the lab setup, DNS activity, Splunk investigation, alert, and packet analysis.
 
-All screenshots are available in the [`evidence/`](evidence/) directory.
+All screenshots are available in the [`Evidence/`](Evidence/) directory.
 
 ### Main Evidence
 
 | Screenshot | Description |
 |---|---|
-| [01 — DNS Baseline Query Frequency](evidence/01_DNS_Baseline_Query_Frequency.png) | DNS baseline query frequency |
-| [03 — DNS Baseline Process/Query Relationship](evidence/03_DNS_Baseline_Process_Query_Relationship.png) | DNS process/query relationship |
-| [06 — DNS C2 Server Task and Result](evidence/06_DNS_C2_Server_Task_Result.png) | Controlled DNS C2 server activity |
-| [07 — DNS C2 Client Task Execution](evidence/07_DNS_C2_Client_Task_Execution.png) | DNS C2 client task execution |
-| [09 — Splunk DNS C2 Events](evidence/09_Splunk_DNS_C2_Events.png) | Splunk DNS C2 events |
-| [10 — Splunk DNS Process/Query Relationship](evidence/10_Splunk_DNS_Process_Query_Relationship.png) | DNS process/query analysis |
-| [13 — Splunk DNS C2 Alert Triggered](evidence/13_Splunk_DNS_C2_Alert_Triggered.png) | Triggered Splunk alert |
+| [01 — DNS Baseline Query Frequency](Evidence/01_DNS_Baseline_Query_Frequency.png) | DNS baseline query frequency |
+| [03 — DNS Baseline Process/Query Relationship](Evidence/03_DNS_Baseline_Process_Query_Relationship.png) | DNS process/query relationship |
+| [06 — DNS C2 Server Task and Result](Evidence/06_DNS_C2_Server_Task_Result.png) | Controlled DNS C2 server activity |
+| [07 — DNS C2 Client Task Execution](Evidence/07_DNS_C2_Client_Task_Execution.png) | DNS C2 client task execution |
+| [09 — Splunk DNS C2 Events](Evidence/09_Splunk_DNS_C2_Events.png) | Splunk DNS C2 events |
+| [10 — Splunk DNS Process/Query Relationship](Evidence/10_Splunk_DNS_Process_Query_Relationship.png) | DNS process/query analysis |
+| [13 — Splunk DNS C2 Alert Triggered](Evidence/13_Splunk_DNS_C2_Alert_Triggered.png) | Triggered Splunk alert |
 | [14 — Raw DNS C2 Result Event](evidence/14_Splunk_Raw_DNS_C2_Result_Event.png) | Raw DNS result event |
-| [15 — DNS C2 Check-in](evidence/15_Splunk_DNS_C2_Checkin_Event.png) | DNS C2 check-in |
-| [16 — Encoded Payload Extraction](evidence/16_Encoded_Payload_Extraction.png) | Encoded data extraction |
-| [17 — Systeminfo Process Execution](evidence/17_Systeminfo_Process_Execution.png) | Systeminfo process execution |
-| [19 — Wireshark DNS C2 Exchange](evidence/19_Wireshark_DNS_C2_Exchange.png) | Wireshark DNS C2 exchange |
+| [15 — DNS C2 Check-in](Evidence/15_Splunk_DNS_C2_Checkin_Event.png) | DNS C2 check-in |
+| [16 — Encoded Payload Extraction](Evidence/16_Encoded_Payload_Extraction.png) | Encoded data extraction |
+| [17 — Systeminfo Process Execution](Evidence/17_Systeminfo_Process_Execution.png) | Systeminfo process execution |
+| [19 — Wireshark DNS C2 Exchange](Evidence/19_Wireshark_DNS_C2_Exchange.png) | Wireshark DNS C2 exchange |
 
-Additional supporting screenshots are available in the [`evidence/`](evidence/) directory.
+Additional supporting screenshots are available in the [`Evidence/`](Evidence/) directory.
 
 ---
 
 ## 17. Repository Structure
 
-```text
+`
 SOC-Case-3-DNS-C2-Detection/
 │
 ├── README.md
 │
-├── client/
-│   └── dns_c2_client.ps1
-│
-├── server/
-│   └── dns_c2_server_controlled.py
-│
-├── evidence/
+├── Evidence/
 │   ├── 01_DNS_Baseline_Query_Frequency.png
 │   ├── 02_DNS_Baseline_Process_Frequency.png
 │   ├── 03_DNS_Baseline_Process_Query_Relationship.png
@@ -675,10 +669,7 @@ SOC-Case-3-DNS-C2-Detection/
 │   ├── 17_Systeminfo_Process_Execution.png
 │   ├── 18_DNS_C2_Base32_Decoding.png
 │   └── 19_Wireshark_DNS_C2_Exchange.png
-│
-└── pcap/
-    └── DNS_C2_Wireshark_Capture.pcapng
-```
+`
 
 ---
 
