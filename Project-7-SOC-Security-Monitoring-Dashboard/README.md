@@ -173,13 +173,13 @@ The dashboard brings together the relevant visualizations from the three scenari
 
 The following screenshot shows the completed SOC Security Monitoring Dashboard, combining the visualizations from all three security scenarios.
 
-![SOC Security Monitoring Dashboard Overview](./Dashboard/Screenshots/10_SOC_Dashboard_Overview.png)
+![SOC Security Monitoring Dashboard Overview](./Screenshots/10_SOC_Dashboard_Overview.png)
 
 ### Dashboard Investigation Evidence
 
 The following screenshot shows the detailed investigation information available in the dashboard, including authentication events, privilege-related activity, and SSH network-flow details.
 
-![SOC Dashboard Investigation Evidence](./Dashboard/Screenshots/11_SOC_Dashboard_Investigation_Evidence.png)
+![SOC Dashboard Investigation Evidence](./Screenshots/11_SOC_Dashboard_Investigation_Evidence.png)
 
 ## Overall Dashboard Results
 
