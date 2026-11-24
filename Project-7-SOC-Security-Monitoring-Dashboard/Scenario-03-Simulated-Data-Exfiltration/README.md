@@ -113,75 +113,8 @@ The network-flow information helped identify the systems involved in the communi
 
 This information can be useful during a SOC investigation when reviewing unexpected or suspicious file-transfer activity.
 
-## 7. Integration with the SOC Security Monitoring Dashboard
 
-After completing the three scenarios, I combined their relevant visualizations into a single Kibana dashboard named:
-
-**SOC Security Monitoring Dashboard**
-
-The dashboard provided a centralized view of the security activity generated during the lab.
-
-The monitoring panels included:
-
-### SSH Brute-Force Monitoring
-
-- SSH Failed Logins by Source IP and Username.
-- SSH Failed Logins Over Time.
-- SSH Failed-Login Event Table.
-
-### Privilege Escalation Monitoring
-
-- Privilege Escalation Event Count.
-- Privilege Escalation by User and Process.
-
-### Data Exfiltration and Network Monitoring
-
-- Simulated Data Exfiltration – SSH Reverse Traffic.
-- SSH Network-Flow Details.
-- Source IP, destination IP, destination port, and transferred bytes.
-
-### Dashboard Overview Evidence
-
-![SOC Security Monitoring Dashboard Overview](../Dashboard/10-SOC-Dashboard-Overview.png)
-
-### Dashboard Investigation Evidence
-
-![SOC Dashboard Investigation Evidence](../Dashboard/11-SOC-Dashboard-Investigation-Evidence.png)
-
-## 8. Dashboard Results
-
-During the captured dashboard session, the overview displayed the following metrics:
-
-- SSH failed-login visualization: 15 events for source IP `192.168.10.6`.
-- Privilege escalation event count: `1`.
-- SSH traffic metric: Approximately `312 KB`.
-
-The detailed network-flow investigation view displayed:
-
-- Source IP: `192.168.10.6`
-- Destination IP: `192.168.10.7`
-- Destination Port: `22`
-- Destination Bytes: `319,406`
-
-These values represent the metrics displayed in the captured dashboard and investigation views.
-
-The dashboard brought the event summaries and supporting investigation details together in one place.
-
-## 9. Security Relevance
-
-Unexpected file transfers over SSH may require investigation, particularly when the source, destination, account, or transfer activity is unusual.
-
-From a SOC analyst's perspective, network-flow investigation can help identify:
-
-- Communication between internal systems.
-- Source and destination IP addresses.
-- SSH traffic over destination port 22.
-- Network activity associated with file transfers.
-- Unusual transfer patterns that may require further investigation.
-
-In this exercise, I used harmless test data in a controlled lab environment. The activity simulated a file-transfer pattern for defensive monitoring practice; it does not represent a confirmed malicious data-exfiltration incident.
-
-## 10. Conclusion
+## 7. Conclusion
 
 In this scenario, I performed a controlled SSH file-transfer simulation between an Ubuntu Server and Kali Linux using SCP.
 
