@@ -47,7 +47,7 @@ This confirmed that the Windows endpoint successfully communicated with the Kali
 
 ### Evidence 1 – Windows PowerShell Heartbeat Execution
 
-![PowerShell Heartbeat Execution](./Screenshots/S2-03_PowerShell_Execution%283%29.png)
+![PowerShell Heartbeat Execution](./Screenshots/S2-03_PowerShell_Execution.png)
 
 ## 4. Kali Linux HTTP Server Logs
 
@@ -73,7 +73,7 @@ This confirmed that the heartbeat requests were successfully received by the Kal
 
 ### Evidence 2 – Kali Linux HTTP Access Logs
 
-![Kali HTTP Logs](./Screenshots/S2-04_Kali_HTTP_Logs%283%29.png)
+![Kali HTTP Logs](./Screenshots/S2-04_Kali_HTTP_Logs.png)
 
 ## 5. Windows Endpoint Investigation Using Sysmon
 
@@ -96,7 +96,7 @@ This event helped verify that the heartbeat script was executed through PowerShe
 
 ### Evidence 3 – Sysmon Event ID 1
 
-![Sysmon Event ID 1](./Screenshots/S2-05_Sysmon_Event1%283%29.png)
+![Sysmon Event ID 1](./Screenshots/S2-05_Sysmon_Event1.png)
 
 ### 5.2 Sysmon Event ID 3 – Network Connection
 
@@ -114,7 +114,7 @@ This provided endpoint-level evidence of the Windows-to-Kali HTTP connection.
 
 ### Evidence 4 – Sysmon Event ID 3
 
-![Sysmon Event ID 3](./Screenshots/S2-06_Sysmon_Event3%283%29.png)
+![Sysmon Event ID 3](./Screenshots/S2-06_Sysmon_Event3.png)
 
 ## 6. Network Traffic Investigation Using Wireshark
 
@@ -138,7 +138,7 @@ This provided packet-level confirmation of the HTTP heartbeat communication.
 
 ### Evidence 5 – Wireshark HTTP Traffic
 
-![Wireshark HTTP Traffic](./Screenshots/S2-07_Wireshark_HTTP%283%29.png)
+![Wireshark HTTP Traffic](./Screenshots/S2-07_Wireshark_HTTP.png)
 
 ## 7. Suricata Network Event Investigation
 
@@ -160,7 +160,7 @@ This provided additional network-level evidence from the Suricata monitoring env
 
 ### Evidence 6 – Ubuntu Suricata HTTP Logs
 
-![Ubuntu Suricata HTTP Logs](./Screenshots/S2-08_Ubuntu_Suricata_HTTP_Logs%283%29.png)
+![Ubuntu Suricata HTTP Logs](./Screenshots/S2-08_Ubuntu_Suricata_HTTP_Logs.png)
 
 ## 8. Elastic Security Investigation
 
@@ -182,7 +182,7 @@ This confirmed that the relevant network records were available for further revi
 
 ### Evidence 7 – Elastic Network Investigation
 
-![Elastic ES|QL Network Investigation](./Screenshots/S2-09_Elastic_ESQL_Network_Investigation%283%29.png)
+![Elastic ES|QL Network Investigation](./Screenshots/S2-09_Elastic_ESQL_Network_Investigation.png)
 
 ## 9. Investigation Findings
 
