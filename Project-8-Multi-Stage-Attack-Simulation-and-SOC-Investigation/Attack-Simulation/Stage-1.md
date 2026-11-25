@@ -45,7 +45,7 @@ The page was intended only to simulate a security-awareness page access scenario
 
 ### Evidence 1 – Windows Security Awareness Simulation Page
 
-![Windows Security Awareness Simulation Page](./Screenshots/S1-02_Windows_Phishing_Simulation_Page%284%29.png)
+![Windows Security Awareness Simulation Page](./Screenshots/S1-02_Windows_Phishing_Simulation_Page.png)
 
 ## 4. HTTP Server Configuration and Page Access
 
@@ -67,7 +67,7 @@ A separate request for `/favicon.ico` returned `404` because a favicon file was 
 
 ### Evidence 2 – Kali HTTP Access Log
 
-![Kali HTTP Access Log](./Screenshots/S1-03_Kali_HTTP_Access_Log%284%29.png)
+![Kali HTTP Access Log](./Screenshots/S1-03_Kali_HTTP_Access_Log.png)
 
 ## 5. Suricata Network Event Verification
 
@@ -89,7 +89,7 @@ The JSON filtering command required correction before the relevant records could
 
 ### Evidence 3 – Ubuntu Suricata HTTP Flow Event
 
-![Ubuntu Suricata HTTP Flow Event](./Screenshots/S1-04_Ubuntu_Suricata_HTTP_Flow_Event%283%29.png)
+![Ubuntu Suricata HTTP Flow Event](./Screenshots/S1-04_Ubuntu_Suricata_HTTP_Flow_Event.png)
 
 ## 6. Elastic Security Investigation
 
@@ -111,7 +111,7 @@ This confirmed that the relevant Suricata network records were available for inv
 
 ### Evidence 4 – Elastic Suricata Stage 1 Event
 
-![Elastic Suricata Stage 1 Investigation](./Screenshots/S1-05_Elastic_Suricata_Stage1_Event%284%29.png)
+![Elastic Suricata Stage 1 Investigation](./Screenshots/S1-05_Elastic_Suricata_Stage1_Event.png)
 
 ## 7. Investigation Findings
 
